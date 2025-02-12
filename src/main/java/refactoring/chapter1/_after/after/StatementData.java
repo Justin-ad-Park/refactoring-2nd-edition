@@ -2,6 +2,8 @@ package refactoring.chapter1._after.after;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import refactoring.chapter1.data.Invoice;
 import refactoring.chapter1.data.Play;
 
@@ -15,7 +17,7 @@ public record StatementData(
     public static StatementData createStatementData(final Invoice invoice, final Map<String, Play> plays) {
         final List<EnrichPerformance> performances = invoice.performances().stream()
                 .map(performance -> EnrichPerformance.of(performance, plays))
-                .toList();
+                .collect(Collectors.toList());
 
         return new StatementData(
                 invoice.customer(),
