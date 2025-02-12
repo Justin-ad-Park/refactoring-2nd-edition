@@ -19,7 +19,6 @@ public class Statement {
 
         for (var perf : invoice.performances()) {
             final Play play = plays.get(perf.playID());
-            var thisAmount = amountFor(perf, play);
 
             // 포인트를 적립한다.
             volumeCredits += Math.max(perf.audience() - 30, 0);
@@ -33,11 +32,11 @@ public class Statement {
                     String.format(
                             "  %s: %s원 (%d석)\n",
                             play.name(),
-                            format.format(thisAmount / 100.0),
+                            format.format(amountFor(perf, play) / 100.0),
                             perf.audience()
                     )
             );
-            totalAmount += thisAmount;
+            totalAmount += amountFor(perf, play);
         }
 
         result.append(String.format("총액: %s원\n", format.format(totalAmount / 100.0)));
