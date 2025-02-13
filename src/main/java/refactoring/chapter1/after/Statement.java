@@ -40,15 +40,15 @@ public class Statement {
         return result.toString();
     }
 
-    private static int volumeCreditsFor(Performance perf,  Play play) {
-        int volumeCredits = 0;
-        volumeCredits += Math.max(perf.audience() - 30, 0);
+    private static int volumeCreditsFor(Performance aPerformance,  Play play) {
+        int result = 0;
+        result += Math.max(aPerformance.audience() - 30, 0);
 
         // 희극 관객 5명마다 추가 포인트를 제공한다.
         if ("comedy".equals(play.type())) {
-            volumeCredits += Math.floor(perf.audience() / 5);
+            result += Math.floor(aPerformance.audience() / 5);
         }
-        return volumeCredits;
+        return result;
     }
 
     private static int amountFor(Performance aPerformance, Play play) {
