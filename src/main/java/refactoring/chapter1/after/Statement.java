@@ -12,7 +12,6 @@ import java.util.Map;
 public class Statement {
 
     public String statement(Invoice invoice, Map<String, Play> plays) {
-        var totalAmount = 0;
         var result = new StringBuilder("청구 내역 (고객명: " + invoice.customer() + ")\n");
 
         for (var perf : invoice.performances()) {
@@ -27,13 +26,22 @@ public class Statement {
                             perf.audience()
                     )
             );
-            totalAmount += amountFor(perf, play);
         }
 
-        result.append(String.format("총액: %s원\n", formatKRW(totalAmount / 100.0)));
+        result.append(String.format("총액: %s원\n", formatKRW(totalAmount(invoice, plays) / 100.0)));
         result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
 
         return result.toString();
+    }
+
+    private static int totalAmount(Invoice invoice, Map<String, Play> plays) {
+        var totalAmount = 0;
+        for (var perf : invoice.performances()) {
+            final Play play = plays.get(perf.playID());
+
+            totalAmount += amountFor(perf, play);
+        }
+        return totalAmount;
     }
 
     private static int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
