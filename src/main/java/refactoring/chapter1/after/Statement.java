@@ -19,8 +19,6 @@ public class Statement {
         for (var perf : invoice.performances()) {
             final Play play = plays.get(perf.playID());
 
-            volumeCredits += volumeCreditsFor(perf, play);
-
             // 청구 내역을 출력한다.
             result.append(
                     String.format(
@@ -31,6 +29,12 @@ public class Statement {
                     )
             );
             totalAmount += amountFor(perf, play);
+        }
+
+        for (var perf : invoice.performances()) {   // <- 값 누적 로직을 별도 for문으로 분리
+            final Play play = plays.get(perf.playID());
+
+            volumeCredits += volumeCreditsFor(perf, play);
         }
 
         result.append(String.format("총액: %s원\n", formatKRW(totalAmount / 100.0)));
