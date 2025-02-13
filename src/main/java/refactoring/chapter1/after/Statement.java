@@ -12,6 +12,10 @@ import java.util.Map;
 public class Statement {
 
     public String statement(Invoice invoice, Map<String, Play> plays) {
+        return renderPlainText(invoice, plays);
+    }
+
+    private static String renderPlainText(Invoice invoice, Map<String, Play> plays) {
         var result = new StringBuilder("청구 내역 (고객명: " + invoice.customer() + ")\n");
 
         for (var perf : invoice.performances()) {
