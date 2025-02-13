@@ -35,23 +35,23 @@ public class Statement {
     }
 
     private static int totalAmount(Invoice invoice, Map<String, Play> plays) {
-        var totalAmount = 0;
+        var result = 0;
         for (var perf : invoice.performances()) {
             final Play play = plays.get(perf.playID());
 
-            totalAmount += amountFor(perf, play);
+            result += amountFor(perf, play);
         }
-        return totalAmount;
+        return result;
     }
 
     private static int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
-        var volumeCredits = 0;
+        var result = 0;
         for (var perf : invoice.performances()) {
             final Play play = plays.get(perf.playID());
 
-            volumeCredits += volumeCreditsFor(perf, play);
+            result += volumeCreditsFor(perf, play);
         }
-        return volumeCredits;
+        return result;
     }
 
     private static String formatKRW(double number) {
@@ -70,7 +70,7 @@ public class Statement {
     }
 
     private static int amountFor(Performance aPerformance, Play play) {
-        var result = 0;
+        int result;
 
         switch (play.type()) {
             case "tragedy":
