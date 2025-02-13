@@ -30,17 +30,20 @@ public class Statement {
             totalAmount += amountFor(perf, play);
         }
 
-        var volumeCredits = 0;  // <- 변수 선언을 반복문 앞으로 이동, Slide Statements(리팩터링 8.6 문장 슬라이드하기)
-        for (var perf : invoice.performances()) {   // <- 값 누적 로직을 별도 for문으로 분리
+        result.append(String.format("총액: %s원\n", formatKRW(totalAmount / 100.0)));
+        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(invoice, plays)));
+
+        return result.toString();
+    }
+
+    private static int totalVolumeCredits(Invoice invoice, Map<String, Play> plays) {
+        var volumeCredits = 0;
+        for (var perf : invoice.performances()) {
             final Play play = plays.get(perf.playID());
 
             volumeCredits += volumeCreditsFor(perf, play);
         }
-
-        result.append(String.format("총액: %s원\n", formatKRW(totalAmount / 100.0)));
-        result.append(String.format("적립 포인트: %d점\n", volumeCredits));
-
-        return result.toString();
+        return volumeCredits;
     }
 
     private static String formatKRW(double number) {
