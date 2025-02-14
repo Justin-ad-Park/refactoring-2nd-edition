@@ -19,7 +19,7 @@ public class StatementVo {
 
         this.enrichPerformances = this.performances.stream()
                 .map(performance -> EnrichPerformance.of(performance, plays))
-                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.toList());
     }
 
     public String customer() {
@@ -41,22 +41,10 @@ public class StatementVo {
     }
 
     public int totalVolumeCredits() {
-        var result = 0;
-        for (var perf : enrichPerformances) {
-            result += volumeCreditsFor(perf);
-        }
-        return result;
+        return enrichPerformances.stream()
+                .mapToInt(EnrichPerformance::volumeCreditsFor)
+                .sum();
     }
 
-    public int volumeCreditsFor(EnrichPerformance enrichPerformance) {
-        int result = 0;
-        result += Math.max(enrichPerformance.audience() - 30, 0);
-
-        // 희극 관객 5명마다 추가 포인트를 제공한다.
-        if ("comedy".equals(enrichPerformance.play().type())) {
-            result += Math.floor(enrichPerformance.audience() / 5);
-        }
-        return result;
-    }
 
 }
