@@ -22,14 +22,13 @@ public class Statement {
         var result = new StringBuilder("청구 내역 (고객명: " + statementVo.customer() + ")\n");
 
         for (var perf : statementVo.enrichPerformances()) {
-            final Play play = plays.get(perf.playID());
 
             // 청구 내역을 출력한다.
             result.append(
                     String.format(
                             "  %s: %s원 (%d석)\n",
-                            play.name(),
-                            formatKRW(amountFor(perf, play) / 100.0),
+                            perf.play().name(),
+                            formatKRW(amountFor(perf) / 100.0),
                             perf.audience()
                     )
             );
@@ -46,7 +45,7 @@ public class Statement {
         for (var perf : performances) {
             final Play play = plays.get(perf.playID());
 
-            result += amountFor(perf, play);
+            result += amountFor(perf);
         }
         return result;
     }
@@ -76,10 +75,10 @@ public class Statement {
         return result;
     }
 
-    private static int amountFor(EnrichPerformance aPerformance, Play play) {
+    private static int amountFor(EnrichPerformance aPerformance) {
         int result;
 
-        switch (play.type()) {
+        switch (aPerformance.play().type()) {
             case "tragedy":
                 result = 40000;
                 if (aPerformance.audience() > 30) {
@@ -94,7 +93,7 @@ public class Statement {
                 result += 300 * aPerformance.audience();
                 break;
             default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + play.type());
+                throw new IllegalArgumentException("알 수 없는 장르: " + aPerformance.play().type());
         }
         return result;
     }
