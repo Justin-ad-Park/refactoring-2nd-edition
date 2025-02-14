@@ -34,32 +34,14 @@ public class Statement {
         }
 
         result.append(String.format("총액: %s원\n", formatKRW(statementVo.totalAmount() / 100.0)));
-        result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(statementVo.enrichPerformances())));
+        result.append(String.format("적립 포인트: %d점\n",statementVo.totalVolumeCredits()));
 
         return result.toString();
     }
 
-    private static int totalVolumeCredits(List<EnrichPerformance> enrichPerformances) {
-        var result = 0;
-        for (var perf : enrichPerformances) {
-            result += volumeCreditsFor(perf);
-        }
-        return result;
-    }
 
     private static String formatKRW(double number) {
         return NumberFormat.getCurrencyInstance(Locale.US).format(number);
-    }
-
-    private static int volumeCreditsFor(EnrichPerformance enrichPerformance) {
-        int result = 0;
-        result += Math.max(enrichPerformance.audience() - 30, 0);
-
-        // 희극 관객 5명마다 추가 포인트를 제공한다.
-        if ("comedy".equals(enrichPerformance.play().type())) {
-            result += Math.floor(enrichPerformance.audience() / 5);
-        }
-        return result;
     }
 
 

@@ -39,4 +39,24 @@ public class StatementVo {
                 .mapToInt(EnrichPerformance::amountFor)
                 .sum();
     }
+
+    public int totalVolumeCredits() {
+        var result = 0;
+        for (var perf : enrichPerformances) {
+            result += volumeCreditsFor(perf);
+        }
+        return result;
+    }
+
+    public int volumeCreditsFor(EnrichPerformance enrichPerformance) {
+        int result = 0;
+        result += Math.max(enrichPerformance.audience() - 30, 0);
+
+        // 희극 관객 5명마다 추가 포인트를 제공한다.
+        if ("comedy".equals(enrichPerformance.play().type())) {
+            result += Math.floor(enrichPerformance.audience() / 5);
+        }
+        return result;
+    }
+
 }
