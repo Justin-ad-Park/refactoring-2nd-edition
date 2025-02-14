@@ -13,7 +13,7 @@ import java.util.Map;
 public class Statement {
 
     public String statement(Invoice invoice, Map<String, Play> plays) {
-        StatementVo statementVo = new StatementVo(invoice);
+        StatementVo statementVo = new StatementVo(invoice, plays);
 
         return renderPlainText(statementVo, plays);
     }
@@ -21,7 +21,7 @@ public class Statement {
     private static String renderPlainText(StatementVo statementVo, Map<String, Play> plays) {
         var result = new StringBuilder("청구 내역 (고객명: " + statementVo.customer() + ")\n");
 
-        for (var perf : statementVo.performances()) {
+        for (var perf : statementVo.enrichPerformances()) {
             final Play play = plays.get(perf.playID());
 
             // 청구 내역을 출력한다.
@@ -35,13 +35,13 @@ public class Statement {
             );
         }
 
-        result.append(String.format("총액: %s원\n", formatKRW(totalAmount(statementVo.performances(), plays) / 100.0)));
+        result.append(String.format("총액: %s원\n", formatKRW(totalAmount(statementVo.enrichPerformances(), plays) / 100.0)));
         result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(statementVo.performances(), plays)));
 
         return result.toString();
     }
 
-    private static int totalAmount(List<Performance> performances, Map<String, Play> plays) {
+    private static int totalAmount(List<EnrichPerformance> performances, Map<String, Play> plays) {
         var result = 0;
         for (var perf : performances) {
             final Play play = plays.get(perf.playID());
@@ -76,7 +76,7 @@ public class Statement {
         return result;
     }
 
-    private static int amountFor(Performance aPerformance, Play play) {
+    private static int amountFor(EnrichPerformance aPerformance, Play play) {
         int result;
 
         switch (play.type()) {
