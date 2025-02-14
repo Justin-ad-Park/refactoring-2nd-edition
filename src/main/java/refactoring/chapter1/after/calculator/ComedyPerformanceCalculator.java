@@ -26,8 +26,8 @@ public class ComedyPerformanceCalculator implements PerformanceCalculator {
     @Override
     public int volumeCredits() {
         int result = volumeCredits(audience);
-
         result += Math.floor(audience / 5);
+        
         return result;
     }
 }

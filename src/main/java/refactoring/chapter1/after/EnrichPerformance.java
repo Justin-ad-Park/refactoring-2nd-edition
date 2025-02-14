@@ -14,7 +14,7 @@ public record EnrichPerformance(
         int volumeCredits) {
 
     public static EnrichPerformance of(final Performance aPerformance, final Map<String, Play> plays) {
-        Play play = playFor(aPerformance, plays);
+        Play play = getPlay(aPerformance, plays);
 
         PerformanceCalculator calculator = PerformanceCalculator.createPerformanceCalculator(
                 aPerformance.audience(),
@@ -30,7 +30,7 @@ public record EnrichPerformance(
         );
     }
 
-    private static Play playFor(Performance aPerformance, Map<String, Play> plays) {
+    private static Play getPlay(Performance aPerformance, Map<String, Play> plays) {
         return plays.get(aPerformance.playID());
     }
 
