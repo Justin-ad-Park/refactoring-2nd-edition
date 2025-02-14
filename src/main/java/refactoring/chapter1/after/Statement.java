@@ -4,7 +4,6 @@ import refactoring.chapter1.data.Invoice;
 import refactoring.chapter1.data.Play;
 
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -19,10 +18,7 @@ public class Statement {
 
     private static String renderPlainText(StatementVo statementVo) {
         var result = new StringBuilder("청구 내역 (고객명: " + statementVo.customer() + ")\n");
-
         for (var perf : statementVo.enrichPerformances()) {
-
-            // 청구 내역을 출력한다.
             result.append(
                     String.format(
                             "  %s: %s원 (%d석)\n",
