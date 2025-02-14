@@ -36,13 +36,13 @@ public class StatementVo {
 
     public int totalAmount() {
         return enrichPerformances.stream()
-                .mapToInt(EnrichPerformance::amountFor)
+                .mapToInt(EnrichPerformance::amount)
                 .sum();
     }
 
     public int totalVolumeCredits() {
         return enrichPerformances.stream()
-                .mapToInt(EnrichPerformance::volumeCreditsFor)
+                .mapToInt(EnrichPerformance::volumeCredits)
                 .sum();
     }
 

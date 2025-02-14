@@ -27,7 +27,7 @@ public class Statement {
                     String.format(
                             "  %s: %s원 (%d석)\n",
                             perf.play().name(),
-                            formatKRW(perf.amountFor() / 100.0),
+                            formatKRW(perf.amount() / 100.0),
                             perf.audience()
                     )
             );
