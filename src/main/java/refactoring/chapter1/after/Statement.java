@@ -33,19 +33,10 @@ public class Statement {
             );
         }
 
-        result.append(String.format("총액: %s원\n", formatKRW(totalAmount(statementVo.enrichPerformances()) / 100.0)));
+        result.append(String.format("총액: %s원\n", formatKRW(statementVo.totalAmount() / 100.0)));
         result.append(String.format("적립 포인트: %d점\n", totalVolumeCredits(statementVo.enrichPerformances())));
 
         return result.toString();
-    }
-
-    private static int totalAmount(List<EnrichPerformance> performances) {
-        var result = 0;
-        for (var perf : performances) {
-
-            result += perf.amountFor();
-        }
-        return result;
     }
 
     private static int totalVolumeCredits(List<EnrichPerformance> enrichPerformances) {

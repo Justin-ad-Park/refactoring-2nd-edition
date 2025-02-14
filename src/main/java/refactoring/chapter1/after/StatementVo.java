@@ -33,4 +33,10 @@ public class StatementVo {
     public List<EnrichPerformance> enrichPerformances() {
         return enrichPerformances;
     }
+
+    public int totalAmount() {
+        return enrichPerformances.stream()
+                .mapToInt(EnrichPerformance::amountFor)
+                .sum();
+    }
 }
