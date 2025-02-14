@@ -13,7 +13,7 @@ import java.util.Map;
 public class Statement {
 
     public String statement(Invoice invoice, Map<String, Play> plays) {
-        StatementVo statementVo = new StatementVo(invoice.customer(), invoice.performances());
+        StatementVo statementVo = new StatementVo(invoice);
 
         return renderPlainText(statementVo, plays);
     }
