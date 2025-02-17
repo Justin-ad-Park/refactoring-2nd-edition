@@ -14,9 +14,8 @@ public class ComedyPerformanceCalculator implements PerformanceCalculator {
     @Override
     public int amount() {
         int result = 30000;
-        if (audience > 20) {
-            result += 10000 + 500 * (audience - 20);
-        }
+        if (audience > 20) result += 10000 + 500 * (audience - 20);
+
 
         result += 300 * audience;
 

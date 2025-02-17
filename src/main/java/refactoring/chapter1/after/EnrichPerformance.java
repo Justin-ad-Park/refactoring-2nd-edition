@@ -1,5 +1,6 @@
 package refactoring.chapter1.after;
 
+import refactoring.chapter1.after.calculator.CalculatorFactory;
 import refactoring.chapter1.after.calculator.PerformanceCalculator;
 import refactoring.chapter1.data.Performance;
 import refactoring.chapter1.data.Play;
@@ -16,7 +17,7 @@ public record EnrichPerformance(
     public static EnrichPerformance of(final Performance aPerformance, final Map<String, Play> plays) {
         Play play = getPlay(aPerformance, plays);
 
-        PerformanceCalculator calculator = PerformanceCalculator.createPerformanceCalculator(
+        PerformanceCalculator calculator = CalculatorFactory.createPerformanceCalculator(
                 aPerformance.audience(),
                 play
         );
