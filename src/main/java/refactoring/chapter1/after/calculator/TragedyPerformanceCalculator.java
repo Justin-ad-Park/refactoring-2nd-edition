@@ -6,7 +6,7 @@ public class TragedyPerformanceCalculator implements PerformanceCalculator {
     final int audience;
     final Play play;
 
-    public TragedyPerformanceCalculator(int audience, Play play) {
+    TragedyPerformanceCalculator(int audience, Play play) {
         this.audience = audience;
         this.play = play;
     }
