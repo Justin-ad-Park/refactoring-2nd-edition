@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "status": "ready"
+  },
+  {
+    "id": 2,
+    "status": "shipping"
+  },
+  {
+    "id": 3,
+    "status": "ready"
+  }
+]
