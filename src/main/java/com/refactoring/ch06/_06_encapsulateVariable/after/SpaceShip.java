@@ -1,4 +1,4 @@
-package com.refactoring.ch06._06_encapsulateVariable;
+package com.refactoring.ch06._06_encapsulateVariable.after;
 
 public class SpaceShip {
 	private Owner owner;
