@@ -1,6 +1,9 @@
 package com.refactoring.ch01.makeTestSource;
 
+import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.refactoring.ch01.before.Statement;
 import com.refactoring.ch01.data.Invoice;
@@ -17,7 +20,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class StatementTestReverseFactoringStep02 {
+class StatementTestReverseFactoringStep03 {
     protected Map<String, Play> plays;
     protected List<Invoice> invoices;
 
@@ -56,21 +59,38 @@ class StatementTestReverseFactoringStep02 {
 
 
     public Map<String, Play> loadPlays() {
-        return loadResource("/chapter1/plays.json", new TypeReference<>() {});
+        return loadResource4Play("/chapter1/plays.json");
     }
+
+
 
     public List<Invoice> loadInvoices() {
-        return loadResource("/chapter1/invoices.json", new TypeReference<>() {});
+        return loadResource4Invoices("/chapter1/invoices.json");
     }
 
-    private <T> T loadResource(String path, TypeReference<T> typeReference) {
+    private Map<String, Play> loadResource4Play(String path) {
         final ObjectMapper mapper = new ObjectMapper();
 
         try (InputStream inputStream = getClass().getResourceAsStream(path)) {
             if (Objects.isNull(inputStream)) {
                 throw new IllegalStateException("테스트 리소스가 없습니다!: " + path);
             }
-            return mapper.readValue(inputStream, typeReference);
+            return mapper.readValue(inputStream, new TypeReference<Map<String, Play>>() {});
+
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    private List<Invoice> loadResource4Invoices(String path) {
+        final ObjectMapper mapper = new ObjectMapper();
+
+        try (InputStream inputStream = getClass().getResourceAsStream(path)) {
+            if (Objects.isNull(inputStream)) {
+                throw new IllegalStateException("테스트 리소스가 없습니다!: " + path);
+            }
+            return mapper.readValue(inputStream, new TypeReference<List<Invoice>>() {});
+
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
