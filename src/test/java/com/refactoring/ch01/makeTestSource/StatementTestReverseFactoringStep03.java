@@ -59,13 +59,13 @@ class StatementTestReverseFactoringStep03 {
 
 
     public Map<String, Play> loadPlays() {
-        return loadResource4Play("/chapter1/plays.json");
+        return loadResource4Play("data/playsData.json");
     }
 
 
 
     public List<Invoice> loadInvoices() {
-        return loadResource4Invoices("/chapter1/invoices.json");
+        return loadResource4Invoices("data/invoicesData.json");
     }
 
     private Map<String, Play> loadResource4Play(String path) {
