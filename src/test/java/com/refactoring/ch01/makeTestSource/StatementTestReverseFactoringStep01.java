@@ -21,10 +21,7 @@ class StatementTestReverseFactoringStep01 {
     private Statement sut;
     private Invoice invoice;
 
-    private static final Ch01DataLoader DATA_LOADER = new Ch01DataLoader(
-            Ch01Test.class.getClassLoader(),
-            new ObjectMapper()
-    );
+    private static final Ch01DataLoader DATA_LOADER = new Ch01DataLoader();
 
 
     @BeforeEach

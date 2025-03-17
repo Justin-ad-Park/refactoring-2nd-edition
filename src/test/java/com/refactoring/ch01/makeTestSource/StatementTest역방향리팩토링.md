@@ -71,15 +71,6 @@
     public <T> T readValue(InputStream src, JavaType valueType)
 ``` 
 
-- readValue(InputStream src, JavaType valueType) 예)
-``` java
-ObjectMapper mapper = new ObjectMapper();
-InputStream inputStream = new FileInputStream("users.json");
-
-JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, User.class);
-List<User> users = mapper.readValue(inputStream, type);
- ```
-
 | 메서드 | 특징 | 사용 예 | 제네릭 지원 | 
 |----|----|----|----|
 |readValue(InputStream, Class<T>) |	단순 객체 변환	| User.class | ❌ |
@@ -91,6 +82,59 @@ List<User> users = mapper.readValue(inputStream, type);
   - 리스트, 맵 같은 컬렉션 변환 (예: List<User>) → readValue(InputStream, TypeReference<T>)
   - 동적이고 복잡한 제네릭 타입 변환 (예: List<Map<String, List<User>>>) → readValue(InputStream, JavaType)
   - 즉, 일반적으로 Class<T>보다 TypeReference<T>를 선호하며, 더 복잡한 타입을 다뤄야 하면 JavaType을 활용하면 됩니다!
+
+
+### readValue(InputStream src, JavaType valueType) ###
+
+#### 쉬운 예 ####
+``` java
+ObjectMapper mapper = new ObjectMapper();
+InputStream inputStream = new FileInputStream("users.json");
+
+JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, User.class);
+List<User> users = mapper.readValue(inputStream, type);
+ ```
+
+#### 복잡한 예 ####
+``` json
+[
+  {
+    "groupA": [
+      {"name": "Alice", "age": 30},
+      {"name": "Bob", "age": 25}
+    ]
+  },
+  {
+    "groupB": [
+      {"name": "Charlie", "age": 28}
+    ]
+  }
+]
+```
+
+``` java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import java.util.*;
+
+public class ComplexCollectionExample {
+    public static void main(String[] args) throws Exception {
+        String json = "[{\"groupA\":[{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}]},{\"groupB\":[{\"name\":\"Charlie\",\"age\":28}]}]";
+        ObjectMapper mapper = new ObjectMapper();
+        
+        TypeFactory typeFactory = mapper.getTypeFactory();
+        JavaType myClassListType = typeFactory.constructCollectionType(List.class, MyClass.class);
+        JavaType mapType = typeFactory.constructMapType(Map.class, String.class, myClassListType);
+        JavaType complexType = typeFactory.constructCollectionType(List.class, mapType);
+
+        List<Map<String, List<MyClass>>> result = mapper.readValue(json, complexType);
+
+        result.forEach(System.out::println);
+    }
+}
+ ```
+
 
 
 

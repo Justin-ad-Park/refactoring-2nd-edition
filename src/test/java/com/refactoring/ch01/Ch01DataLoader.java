@@ -13,26 +13,24 @@ import com.refactoring.ch01.data.Play;
 
 public final class Ch01DataLoader {
 
-    private final ClassLoader classLoader;
     private final ObjectMapper mapper;
 
-    public Ch01DataLoader(final ClassLoader classLoader, final ObjectMapper mapper) {
-        this.classLoader = classLoader;
-        this.mapper = mapper;
+    public Ch01DataLoader() {
+        this.mapper = new ObjectMapper();
     }
 
     public Map<String, Play> loadPlays() {
-        return loadResource("chapter1/plays.json", new TypeReference<>() {
+        return loadResource("/chapter1/plays.json", new TypeReference<>() {
         });
     }
 
     public List<Invoice> loadInvoices() {
-        return loadResource("chapter1/invoices.json", new TypeReference<>() {
+        return loadResource("/chapter1/invoices.json", new TypeReference<>() {
         });
     }
 
     private <T> T loadResource(String path, TypeReference<T> typeReference) {
-        try (InputStream inputStream = classLoader.getResourceAsStream(path)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(path)) {
             if (Objects.isNull(inputStream)) {
                 throw new IllegalStateException("테스트 리소스가 없습니다!: " + path);
             }
