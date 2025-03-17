@@ -14,14 +14,18 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class StatementTestReverseFactoring {
+class StatementTestReverseFactoringStep01 {
     protected Map<String, Play> plays;
     protected List<Invoice> invoices;
+
+    private Statement sut;
+    private Invoice invoice;
 
     private static final Ch01DataLoader DATA_LOADER = new Ch01DataLoader(
             Ch01Test.class.getClassLoader(),
             new ObjectMapper()
     );
+
 
     @BeforeEach
     void loadData() {
@@ -31,9 +35,6 @@ class StatementTestReverseFactoring {
         sut = new Statement();
         invoice = invoices.get(0);
     }
-
-    private Statement sut;
-    private Invoice invoice;
 
 
     @Test
@@ -54,5 +55,4 @@ class StatementTestReverseFactoring {
         // then
         assertThat(result).isEqualTo(expected);
     }
-
 }
