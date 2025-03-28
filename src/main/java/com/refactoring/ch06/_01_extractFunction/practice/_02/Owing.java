@@ -1,19 +1,18 @@
 package com.refactoring.ch06._01_extractFunction.practice._02;
 
 public class Owing {
-    private Invoice invoice;
+    private final Invoice invoice;
+    private final int outstanding;
 
     public Owing(Invoice invoice) {
         this.invoice = invoice;
+        this.outstanding = getOutstanding();
     }
 
     public String printOwing01() {
-        var outstanding = 0;
-
         StringBuilder result = new StringBuilder();
         result.append(getBanner());
-        outstanding = getOutstanding();
-        result.append(getDetails(invoice, outstanding));
+        result.append(getDetails());
 
         return result.toString();
     }
@@ -25,7 +24,7 @@ public class Owing {
                 .sum();
     }
 
-    private String getDetails(Invoice invoice, int outstanding) {
+    private String getDetails() {
         StringBuilder result = new StringBuilder();
 
         result.append("name: " + invoice.getCustomer() + "\n");
