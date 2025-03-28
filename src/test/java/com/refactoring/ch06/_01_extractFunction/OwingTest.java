@@ -29,8 +29,7 @@ class OwingTest {
 		String expected = """
 			************************
 			**** customer owing ****
-			************************
-			
+			************************		
 			customer: BigCo
 			amount: $1,000.00
 			due date: 2024-12-31
