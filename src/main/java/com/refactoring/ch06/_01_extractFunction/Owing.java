@@ -23,11 +23,10 @@ public class Owing {
 	}
 
 	private int calculateOutstanding(Invoice invoice) {
-		int result = 0;
-		for (Order order : invoice.getOrders()) {
-			result += order.getAmount();
-		}
-		return result;
+		return invoice.getOrders()
+				.stream()
+				.mapToInt(Order::getAmount)
+				.sum();
 	}
 
 	private String detailed(Invoice invoice, int outstanding) {

@@ -1,9 +1,6 @@
 package com.refactoring.ch01.makeTestSource;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.refactoring.ch01.before.Statement;
 import com.refactoring.ch01.data.Invoice;
