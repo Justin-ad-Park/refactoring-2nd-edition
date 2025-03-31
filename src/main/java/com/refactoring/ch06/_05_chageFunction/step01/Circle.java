@@ -1,4 +1,4 @@
-package com.refactoring.ch06._05_chageFunctionDeclaration.step01;
+package com.refactoring.ch06._05_chageFunction.step01;
 
 public class Circle {
 

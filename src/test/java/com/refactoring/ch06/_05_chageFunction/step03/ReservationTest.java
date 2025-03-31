@@ -1,4 +1,4 @@
-package com.refactoring.ch06._05_chageFunctionDeclaration.step03;
+package com.refactoring.ch06._05_chageFunction.step03;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

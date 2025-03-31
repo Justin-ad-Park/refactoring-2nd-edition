@@ -1,4 +1,4 @@
-package com.refactoring.ch06._05_chageFunctionDeclaration.step04;
+package com.refactoring.ch06._05_chageFunction.step04;
 
 public class Customer {
 	private String name;
