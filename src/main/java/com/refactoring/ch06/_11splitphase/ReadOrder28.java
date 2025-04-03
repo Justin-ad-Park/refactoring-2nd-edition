@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 public class ReadOrder28 {
 
     public static long run(String[] args) throws IOException {
-        //변수 인라인화
         return countOrders(new CommandLine(args));
     }
 

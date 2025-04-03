@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 public class ReadOrder26 {
 
     public static long run(String[] args) throws IOException {
-        //변수 인라인화
         return countOrders(new CommandLine(args));
     }
 
@@ -21,7 +20,7 @@ public class ReadOrder26 {
 
         if (commandLine.onlyCountReady())
             return Stream.of(orders)
-                    .filter(Order::isReady)
+                    .filter(Order::isReady)     //캡슐화 : 메서드 이동
                     .count();
         else
             return orders.length;

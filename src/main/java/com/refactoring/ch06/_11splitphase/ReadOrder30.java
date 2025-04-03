@@ -23,7 +23,6 @@ public class ReadOrder30 {
         return countOrders.count(getOrders(commandLine));
     }
 
-    // getOrders 메서드 추출
     private static Order[] getOrders(CommandLine commandLine) throws IOException {
         File input = new ClassPathResource(commandLine.filename()).getFile();
         ObjectMapper mapper = new ObjectMapper();

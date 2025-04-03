@@ -16,13 +16,12 @@ public class ReadOrder31 {
     }
 
     private static long countOrders(CommandLine commandLine) throws IOException {
+        // 팩토리 클랫 생성
         CountOrders countOrders = CountOrderFactory.createCountOrders(commandLine.onlyCountReady());
 
-        // 변수 인라인화
         return countOrders.count(getOrders(commandLine));
     }
 
-    // getOrders 메서드 추출
     private static Order[] getOrders(CommandLine commandLine) throws IOException {
         File input = new ClassPathResource(commandLine.filename()).getFile();
         ObjectMapper mapper = new ObjectMapper();
