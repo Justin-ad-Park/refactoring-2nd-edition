@@ -20,4 +20,8 @@ public class Order {
 	public String getStatus() {
 		return status;
 	}
+
+	public boolean isReady() {
+		return status.equals("ready");
+	}
 }
