@@ -19,6 +19,18 @@ public class Orders {
                 .count();
     }
 
+    public long lowerPriorityCount() {
+        return Arrays.stream(orders)
+                .filter(o -> o.getPriority().equals("low") || o.getPriority().equals("medium"))
+                .count();
+    }
+
+    public long lowestPriorityCount() {
+        return Arrays.stream(orders)
+                .filter(o -> o.getPriority().equals("low"))
+                .count();
+    }
+
     public Order getOrder(int index) {
         return orders[index];
     }

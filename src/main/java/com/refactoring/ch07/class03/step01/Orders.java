@@ -25,6 +25,12 @@ public class Orders {
                 .count();
     }
 
+    public long lowestPriorityCount() {
+        return Arrays.stream(orders)
+                .filter(o -> o.getPriority() == Priority.LOW)
+                .count();
+    }
+
     public Order getOrder(int index) {
         return orders[index];
     }

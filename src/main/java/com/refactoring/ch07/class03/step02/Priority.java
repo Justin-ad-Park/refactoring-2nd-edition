@@ -20,4 +20,8 @@ public enum Priority {
         return this.priorityLevel < other.priorityLevel;
     }
 
+    public boolean isLowest() {
+        return this.priorityLevel == LOW.priorityLevel;
+    }
+
 }
