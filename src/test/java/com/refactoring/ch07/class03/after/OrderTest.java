@@ -1,7 +1,5 @@
-package com.refactoring.ch07.class03.step01;
+package com.refactoring.ch07.class03.after;
 
-import com.refactoring.ch07.class03.step01.Order;
-import com.refactoring.ch07.class03.step01.Priority;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.refactoring.ch07.class03.step01;
+package com.refactoring.ch07.class03.step02;
 
 public class Order {
     private final Long id;
