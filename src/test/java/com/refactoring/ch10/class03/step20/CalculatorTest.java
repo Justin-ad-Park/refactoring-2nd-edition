@@ -1,7 +1,5 @@
-package com.refactoring.ch10.class03.step02;
+package com.refactoring.ch10.class03.step20;
 
-import com.refactoring.ch10.class03.step02.Calculator;
-import com.refactoring.ch10.class03.step02.Instrument;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,8 @@
-package com.refactoring.ch10.class03.step01;
+package com.refactoring.ch10.class03.origin;
 
-import com.refactoring.ch10.class03.LocalDateFactory;
 import com.refactoring.ch10.class03.Paystub;
+
+import java.time.LocalDate;
 import java.time.Month;
 
 public class Employee {
@@ -15,7 +16,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Paystub getPaystub(LocalDateFactory localDate) {
+    public Paystub getPaystub() {
         Paystub result;
 
         if (isSeparated) {  //퇴사한 직원
@@ -29,7 +30,7 @@ public class Employee {
                 result = new Paystub(salary / 12 , 0, "SAL");
 
                 // 12월에는 보너스 지급 (연봉의 10%)
-                if( localDate.now().getMonth() == Month.DECEMBER )
+                if( LocalDate.now().getMonth() == Month.SEPTEMBER )
                     result = new Paystub(result.amount(), (int)(salary * 0.1) , "BONUS");
 
             }
@@ -37,4 +38,11 @@ public class Employee {
         return result;
     }
 
+    public static void main(String[] args) {
+        Employee employee = new Employee(false, false, 48000000);
+        Paystub paystub = employee.getPaystub();
+        System.out.println("Paystub Amount: " + paystub.amount());
+        System.out.println("Paystub Bonus: " + paystub.bonus());
+        System.out.println("Paystub Reason Code: " + paystub.reasonCode());
+    }
 }

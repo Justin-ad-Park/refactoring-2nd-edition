@@ -1,4 +1,4 @@
-package com.refactoring.ch10.class03.step02;
+package com.refactoring.ch10.class03.step20;
 
 public class Calculator {
 
