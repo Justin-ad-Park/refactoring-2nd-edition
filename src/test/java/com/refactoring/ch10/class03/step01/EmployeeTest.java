@@ -42,6 +42,7 @@ class EmployeeTest {
 		Assertions.assertEquals(4800000, paystub.bonus());
 	}
 
+	@Test
 	void getPayAmount_은퇴직원(){
 		// given
 		Employee employee = new Employee(false, true, 100000000);
