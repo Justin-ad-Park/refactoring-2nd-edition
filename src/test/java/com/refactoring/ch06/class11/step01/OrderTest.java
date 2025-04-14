@@ -1,8 +1,5 @@
 package com.refactoring.ch06.class11.step01;
 
-import com.refactoring.ch06.class11.step01.Order;
-import com.refactoring.ch06.class11.step01.Product;
-import com.refactoring.ch06.class11.step01.ShippingMethod;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
