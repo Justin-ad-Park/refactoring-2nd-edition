@@ -1,4 +1,4 @@
-package com.refactoring.ch10.class05.step02;
+package com.refactoring.ch10.class05.before;
 
 public class PaymentHistory {
 

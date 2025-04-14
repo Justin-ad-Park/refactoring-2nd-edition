@@ -1,4 +1,4 @@
-package com.refactoring.ch10.class05.step01;
+package com.refactoring.ch10.class05.step99;
 
 public class PaymentHistory {
 
@@ -12,5 +12,13 @@ public class PaymentHistory {
 
 	public int getWeeksDelinquentInLastYear() {
 		return delinquent ? delinquentWeeks : 0;
+	}
+
+	public boolean isDelinquent() {
+		return delinquent;
+	}
+
+	public int getDelinquentWeeks() {
+		return delinquentWeeks;
 	}
 }

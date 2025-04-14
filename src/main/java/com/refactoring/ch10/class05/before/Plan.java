@@ -1,4 +1,4 @@
-package com.refactoring.ch10.class05.step01;
+package com.refactoring.ch10.class05.before;
 
 import java.util.Objects;
 

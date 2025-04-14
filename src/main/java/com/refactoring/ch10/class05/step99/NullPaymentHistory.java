@@ -1,4 +1,4 @@
-package com.refactoring.ch10.class05.step02;
+package com.refactoring.ch10.class05.step99;
 
 public class NullPaymentHistory extends PaymentHistory {
 
