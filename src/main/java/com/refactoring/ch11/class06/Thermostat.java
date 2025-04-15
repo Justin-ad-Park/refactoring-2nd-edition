@@ -1,4 +1,4 @@
-package com.refactoring.ch11.class06.step01;
+package com.refactoring.ch11.class06;
 
 public class Thermostat {
 

@@ -1,12 +1,12 @@
-package com.refactoring.ch11.class06.step01;
+package com.refactoring.ch11.class06;
 
-public class HeatingPlan {
+public class HeatingPlan_step03 {
 
 	private final int min;
 	private final int max;
 	private final Thermostat thermostat;
 
-	public HeatingPlan(int min, int max) {
+	public HeatingPlan_step03(int min, int max) {
 		this.min = min;
 		this.max = max;
 		this.thermostat = new Thermostat(25);
