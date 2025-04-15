@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class07.step01;
+package com.refactoring.ch12.class07.origin;
 
 public class Person {
 	private final String name;
@@ -13,13 +13,5 @@ public class Person {
 
 	public String genderCode() {
 		return "X";
-	}
-
-	public boolean isMale() {
-		return this instanceof Male;
-	}
-
-	public boolean isFemale() {
-		return this instanceof Female;
 	}
 }

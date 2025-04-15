@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class07.step01;
+package com.refactoring.ch12.class07.origin;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,8 +15,8 @@ class PersonTest {
         List<Person> people = List.of(new Male("kim"), new Male("lee"),
                 new Female("park"));
         // when
-        long maleCount = people.stream().filter(Person::isMale).count();
-        long femaleCount = people.stream().filter(Person::isFemale).count();
+        long maleCount = people.stream().filter(p -> p instanceof Male).count();
+        long femaleCount = people.stream().filter(p -> p instanceof Female).count();
 
         // then
         Assertions.assertThat(maleCount).isEqualTo(2);
