@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class08.step01;
+package com.refactoring.ch12.class08.step10;
 
 public class Employee extends Party {
 	private final int id;

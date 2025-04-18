@@ -1,7 +1,5 @@
-package com.refactoring.ch12.class08.step01;
+package com.refactoring.ch12.class08.step10;
 
-import com.refactoring.ch12.class08.step01.Department;
-import com.refactoring.ch12.class08.step01.Employee;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +20,7 @@ class DepartmentTest {
 		// when
 		int cost = department.getAnnualCost();
 		// then
-		Assertions.assertThat(cost).isEqualTo((1200 + 2400 + 3600) * 12);
+		Assertions.assertThat(cost).isEqualTo((100 + 200 + 300) * 12);
 	}
 
 }

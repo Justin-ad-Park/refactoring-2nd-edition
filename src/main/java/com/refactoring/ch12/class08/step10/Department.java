@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class08.step01;
+package com.refactoring.ch12.class08.step10;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Department extends Party {
 	@Override
 	public int getMonthlyCost() {
 		return employee.stream()
-			.mapToInt(Employee::getAnnualCost)
+			.mapToInt(Employee::getMonthlyCost)
 			.sum();
 	}
 	
