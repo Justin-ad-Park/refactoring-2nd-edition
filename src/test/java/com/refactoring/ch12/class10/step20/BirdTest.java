@@ -1,7 +1,5 @@
-package com.refactoring.ch12.class10.step02;
+package com.refactoring.ch12.class10.step20;
 
-import com.refactoring.ch12.class10.step02.Bird;
-import com.refactoring.ch12.class10.step02.BirdInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

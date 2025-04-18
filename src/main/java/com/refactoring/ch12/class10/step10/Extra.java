@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class10.step01;
+package com.refactoring.ch12.class10.step10;
 
 public class Extra {
 	private final String name;
@@ -16,9 +16,4 @@ public class Extra {
 	public int getFee() {
 		return fee;
 	}
-
-	public boolean hasOwnProperty(String property) {
-		return name.equals(property);
-	}
-
 }

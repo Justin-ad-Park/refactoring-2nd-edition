@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class10.step02;
+package com.refactoring.ch12.class10.step20;
 
 public class SpeciesDelegate {
 	final BirdInfo data;
