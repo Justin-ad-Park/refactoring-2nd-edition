@@ -18,7 +18,7 @@ class ScrollTest {
         // given
         Catalog catalog = new Catalog();
         CatalogItem itemStone = new CatalogItem(1, "Stone", List.of("revered"));
-        CatalogItem itemBible = new CatalogItem(2, "Bible", List.of("Jesus"));
+        CatalogItem itemBible = new CatalogItem(2, "Bible", List.of("BestSeller"));
 
         catalog.add(itemStone);
         catalog.add(itemBible);
