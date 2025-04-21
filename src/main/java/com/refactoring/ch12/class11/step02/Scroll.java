@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class11.step01;
+package com.refactoring.ch12.class11.step02;
 
 import com.refactoring.ch12.class11.CatalogItem;
 
@@ -11,9 +11,9 @@ public class Scroll {
 	private final LocalDate lastCleaned;
 	private final CatalogItem catalogItem;
 
-	public Scroll(int id, String title, List<String> tags, LocalDate dateLastCleaned) {
+	public Scroll(int id, LocalDate dateLastCleaned, int catalogId, Catalog catalog) {
 		this.id = id;
-		this.catalogItem = new CatalogItem(id, title, tags);
+		this.catalogItem = catalog.get(catalogId);
 		this.lastCleaned = dateLastCleaned;
 	}
 
@@ -27,7 +27,7 @@ public class Scroll {
 	}
 
 	public int getId() {
-		return this.id;
+		return catalogItem.getId();
 	}
 
 	public String getTitle() {

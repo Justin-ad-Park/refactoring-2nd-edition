@@ -1,4 +1,4 @@
-package com.refactoring.ch12.class11.step01;
+package com.refactoring.ch12.class11;
 
 import java.util.List;
 
