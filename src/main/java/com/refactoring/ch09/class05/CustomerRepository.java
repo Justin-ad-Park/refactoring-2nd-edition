@@ -3,7 +3,7 @@ package com.refactoring.ch09.class05;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomerRepository {
+public class  CustomerRepository {
 	private static final Map<Integer, Customer> store = new HashMap<>();
 
 	public static Customer save(Customer customer) {
